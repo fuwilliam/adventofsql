@@ -20,10 +20,11 @@ toy_catalogue as
 			when 'educational' then 'Learning Workshop'
 			else 'General Workshop'
 		end as workshop_assignment,
-		case difficulty_to_make
-			when 1 then 'Simple Gift'
-			when 2 then 'Moderate Gift'
-			else 'Complex Gift'
+		case 
+      when difficulty_to_make = 1 then 'Simple Gift'
+			when difficulty_to_make = 2 then 'Moderate Gift'
+			when difficulty_to_make >= 3 then 'Complex Gift'
+			else 'N/A'
 		end as gift_complexity
 	from public.toy_catalogue
 ),
@@ -46,15 +47,17 @@ expanded_wish_list as
 gift_list as
 (
 	select 
-        -- child_id,
+    -- child_id,
+    -- list_id,
+    -- submitted_date,
 		child_name as name,
 		first_choice as primary_wish,
 		second_choice as backup_wish,
 		first_color_choice as favorite_color,
-		color_count,
-        -- wishes,
-        -- difficulty_to_make,
-        -- category,
+    color_count,
+    -- wishes,
+    -- difficulty_to_make,
+    -- category,
 		gift_complexity,
 		workshop_assignment
 	from expanded_wish_list
@@ -65,5 +68,5 @@ gift_list as
 
 select * from gift_list
 order by name
-
+limit 5
 
