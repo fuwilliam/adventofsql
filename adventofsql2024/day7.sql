@@ -1,4 +1,4 @@
-WITH 
+WITH
 elf_experience AS
 (
     SELECT
@@ -16,8 +16,8 @@ elf_pairs AS
         most.elf_id AS elf_id_1,
         least.elf_id AS elf_id_2,
         most.primary_skill AS shared_skill,
-        most.years_experience,
-        least.years_experience
+        most.years_experience AS elf_1_yoe,
+        least.years_experience AS elf_2_yoe
     FROM elf_experience most
     INNER JOIN elf_experience least
         ON most.primary_skill = least.primary_skill
@@ -29,5 +29,5 @@ SELECT
     elf_id_1,
     elf_id_2,
     shared_skill
-FROM elf_pairs
+FROM elf_pairs  
 ORDER BY shared_skill
