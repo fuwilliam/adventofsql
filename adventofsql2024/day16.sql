@@ -20,7 +20,7 @@ sleigh_location AS
 
 SELECT
     place_name,
-    SUM(hours_spent) AS total_hours_spent
+    SUM(hours_spent)::decimal(12,2) AS total_hours_spent
 FROM sleigh_location
 GROUP BY 1
 ORDER BY 2 DESC
