@@ -21,7 +21,7 @@ qoq_sales AS
 SELECT
     sale_year,
     sale_quarter,
-    (total_sales / last_quarter_total_sales) - 1 AS growth_rate
+    (total_sales / last_quarter_total_sales)::decimal(12,4) - 1 AS growth_rate
 FROM qoq_sales
 WHERE last_quarter_total_sales IS NOT NULL
 ORDER BY 3 DESC
