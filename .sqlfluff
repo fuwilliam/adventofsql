@@ -32,4 +32,4 @@ extended_capitalisation_policy = upper
 
 # Default to preferring the "c_style" (i.e. `!=`)
 [sqlfluff:rules:convention.not_equal]
-preferred_not_equal_style = c_style
+preferred_not_equal_style = c_styles
